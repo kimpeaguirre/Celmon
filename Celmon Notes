@@ -3,6 +3,7 @@ USER
 rails g model User username:string password:string handle:string email:string mobile:integer
 
 Controllers:
+
 a. devise/registrations
 Methods:
 - new (GET /users/sign_up, new_user_registration_path)
@@ -15,6 +16,7 @@ Methods:
 - updates a user’s account information
 - cancel (GET /users/:id/cancel, cancel_user_registration_path)
 - deletes the user’s account
+
 b. devise/users
 Methods:
 - new (GET /users/sign_in, new_user_session_path)
@@ -23,12 +25,14 @@ Methods:
 - logs in the user to the game
 - destroy (DELETE /users/sign_out, destroy_user_session_path)
 - logs the user out of the game
+
 c. devise/passwords
 Methods:
 - edit (GET /users/password/edit, edit_user_password_path)
 - renders a form for editing a user’s password
 - update (PUT /users/password)
 - edits a user’s password
+
 Views:
 a. registrations
 - new.html.erb (new_user_registration)
@@ -47,16 +51,22 @@ Methods:
 - index (GET /games/, games_path)
 - shows the main menu of the application where a user can choose to create, save, or
 load a game
+
 - new (GET /games/, new_game_path)
 - allows the user to create a new game
+
 - create (POST /games)
 - creates a new game session that overwrites a previously saved game
+
 - save (GET /games/:id, save_game_path)
 - allows the user to save current game
+
 - update (PUT /games/:id)
 - saves the user’s current game
+
 - load (GET /games/:id, load_game_path)
 - loads a user’s previously saved game
+
 Views:
 a. games
 - index.html.erb (games)
@@ -67,10 +77,13 @@ rails g model Creature name:string type:string description:text hp:integer
 
 Controller: creatures_controller.rb
 Methods:
+
 - index (GET /creatures, creatures_path)
 - shows a list of all monsters
+
 - show (GET /creatures/:id, creature_path)
 - shows information about a monster
+
 Views:
 a. creatures
 - index.html.erb (creatures)
@@ -84,21 +97,28 @@ Controller: user_creatures_controller.rb
 Methods:
 - index (GET /user_creatures, user_creatures_path)
 - shows user’s monster party
+
 - create (POST /user_creatures) 
 - adds a monster to the user’s monster party after the creature has been defeated in a
 battle and caught by the user
+
 - edit (GET /user_creatures/:id/edit, edit_user_creature_path)
 - renders a form for editing monsters’ nicknames and list of battle moves
+
 - update (PUT /user_creatures/:id)
 - edits monsters’ nicknames and list of battle moves
 - edits monsters’ health points during and after a battle
 - edits arrangement of user’s monster party
+
 - show (GET /user_creatures/:id, user_creature_path)
 - shows information of a user’s monster
+
 - choose (GET /user_creatures/:id, choose_user_creature_path)
 - allows user to choose a monster to be used in battles
+
 - switch (GET /user_creatures/:id, switch_user_creature_path)
 - allows user to select another monster to be used in battles
+
 Views:
 a. user_creatures
 - index.html.erb (user_creatures)
@@ -113,15 +133,20 @@ Methods:
 - index (GET / user_menus /, user_menus_path)
 - shows a menu where a user can choose his action outside a battle (walk around,
 trade, save game, view monster party)
+
 - walk (GET / user_menus /, walk_path)
 - allows the user to walk around in the game where his GPS location is sent to the
 server
+
 - trade (GET /user_menus/, trade_path)
 - redirects to the index method under Trade
+
 - save_game (GET /user_menus/, save_game_path)
 - redirects to the update method under Game
+
 - view_monster_party (GET /user_menus/, view_monster_party_path)
 - redirects to the index method under UserCreature
+
 Views:
 a. user_menus
 - index.html.erb (user_menus)
@@ -135,13 +160,17 @@ Controller: user_battles_controller.rb
 Methods:
 - index (GET /user_battles/, user_battles_path)
 - shows a menu where a user can choose his action in a battle (attack, flee, switch monster)
+
 - attack (GET /user_battles/, attack_path)
 - allows the user’s monster to attack the opponent monster and select a move
 - redirects to the use method under UserCreatureMove
+
 - flee (GET /user_battles/, flee_path)
 - allows the user to flee from the battle
+
 - switch_monster (GET /user_battles/, switch_monster_path)
 - redirects to the switch method under UserCreature
+
 Views:
 a. user_battles
 - index.html.erb (user_battles)
@@ -154,8 +183,10 @@ Controller: moves_controller.rb
 Methods:
 - index (GET /moves, moves_path)
 - shows movelist of all monsters
+
 - show (GET /moves/:id, move_path)
 - shows the effectiveness of a move to other monsters
+
 Views:
 a. moves
 - index.html.erb (moves)
@@ -169,16 +200,19 @@ Controller: user_creature_moves_controller.rb
 Methods:
 - index (GET /user_creature_moves, user_creature_moves_path)
 - shows list of the battle moves of the user’s monster
+
 - create (POST /user_creature_moves)
-- creates a new and evolved battle move to be added to the movelist of the user’s
-monster when the move has reached its maximum experience points
+- creates a new and evolved battle move to be added to the movelist of the user’s monster when the move has reached its maximum experience points
+
 - update (PUT /user_creature_moves/:id)
-- updates experience points of the battle move of the user’s monster when used to
-attack an opponent
+- updates experience points of the battle move of the user’s monster when used to attack an opponent
+
 - show (GET /user_creature_moves/:id, user_creature_move_path)
 - shows the effectiveness of the move to other monsters
+
 - use (GET /user_creature_moves/:id, use_user_creature_move_path)
 - allows the user’s monster to use the move to attack an opponent monster
+
 Views:
 a. user_creature_moves
 - index.html.erb (user_creature_moves)
@@ -193,8 +227,10 @@ Controller: locations_controller.rb
 Methods:
 - retrieve (GET /locations/)
 - gets the gps coordinates of locations
+
 - show (GET /locations/:id, location_path)
 - shows current location information
+
 Views:
 a. Locations
 - show.html.erb (location)
@@ -207,6 +243,7 @@ Controller: creature_locations_controller.rb
 Methods:
 - show (GET /creature_locations/:id, creature_location_path)
 - shows current location information of the user’s monster
+
 Views:
 a. creature_locations
 - show.html.erb (creature_location)
@@ -219,8 +256,10 @@ Controller: trades_controller.rb
 Methods:
 - index (GET /trades, trades_path)
 - shows list of all application users
+
 - show (GET /trades/:id, trade_path)
 - shows a user’s information and monster party
+
 Views:
 a. trades
 - index.html.erb (trades)
@@ -235,16 +274,22 @@ Controller: user_trades_controller.rb
 Methods:
 - index (GET /user_trades, user_trades_path)
 - shows a list of the user’s trade requests from other user
+
 - select_monster (GET /user_trades/:id, select_monster_path)
 - renders a form for choosing a monster to trade with another user
+
 - trade_monster (GET /user_trades/:id, trade_monster_path)
 - trades the monsters of two users
+
 - send_request (GET /user_trades/:id, send_request_path)
 - allows a user to send a request to trade with another user
+
 - approve (GET /user_tradese/:id, approve_trade_path)
 - allows a user to approve a request to trade
+
 - reject (GET /user_trades/:id, reject_trade_path)
 - allows a user to reject a request to trade
+
 Views:
 a. user_trades
 - index.html.erb (user_trades)
