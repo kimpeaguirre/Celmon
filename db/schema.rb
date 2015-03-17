@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312093338) do
+ActiveRecord::Schema.define(version: 20150317083648) do
 
   create_table "creature_locations", force: true do |t|
     t.integer  "location_id"
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20150312093338) do
 
   create_table "creatures", force: true do |t|
     t.string   "name"
-    t.string   "type"
     t.text     "description"
     t.integer  "hp"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ctype"
   end
 
   create_table "games", force: true do |t|
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150312093338) do
   create_table "moves", force: true do |t|
     t.string   "name"
     t.integer  "max_number"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mtype"
   end
 
   create_table "trades", force: true do |t|
