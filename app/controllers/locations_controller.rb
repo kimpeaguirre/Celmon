@@ -4,6 +4,8 @@ class LocationsController < ApplicationController
 	end
 
 	def show
+		@locaion = Location.find(params[:id])
+		render :template => "locations/show"
 	end
 
 end
